@@ -1,11 +1,11 @@
-# ZIZZA Backend Agent
+# ZizZA Backend Intent Server
 
-Provides an interface for executing cryptocurrency operations through the API class, enabling the creation of intents and performing actions on the NEAR and Zcash blockchains. It supports setting up an agent, checking balances, performing swaps, deposits, withdrawals, and sending assets.
+Provides an interface for executing cryptocurrency operations through the API class, enabling the creation of intents and performing actions on the NEAR and Zcash blockchains. It supports setting up an agent, importing of creating wallets, checking balances, performing swaps, deposits, withdrawals, and sending assets.
 
 ## Install
 
 ```sh
-git clone --recursive https://github.com/wh00hw/zizza-backend
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intent-server
 ```
 
 ```sh
@@ -14,7 +14,7 @@ docker build -t zizza-backend .
 or by creating a virtual environment
 
 ```sh
-git clone --recursive https://github.com/wh00hw/zizza-backend
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intent-server
 ```
 
 ```
@@ -383,6 +383,25 @@ response = api.withdraw(
 }
 ```
 
+## Submodules
+
+This project uses the following repository as a submodule:
+
+- [zecwallet-light-cli](https://github.com/james-katz/zecwallet-light-cli): A fully functional Zcash wallet that uses lightnode and implements NU6 network upgrade.
+    - Path: `zizza/zcash/zecwallet-light-cli`
+
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **Apache License 2.0**.  
+
+## Donations
+
+If this project has been helpful to you and you'd like to support its development, donations are greatly appreciated! You can contribute using the following addresses:
+
+- **Zcash**:  
+  `u1a3a7km3ujtzfwywmrv759etufkwyuqve264eqavvsgcx2m7wpfk6kpt5evhqp2nq0qjrddvmp0gpr923q42ddagl7xv77uzmeckark6q`
+
+- **NEAR**:  
+  `wh00hw.near`
+
+Thank you for your support!
