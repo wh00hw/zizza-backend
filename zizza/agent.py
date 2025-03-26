@@ -81,7 +81,11 @@ class Agent:
     def withdraw(self, asset_symbol: str, asset_chain: str, amount: float, native_dest_address: str = None) -> tuple:
         deposited = self.get_deposited_tokens()
         if asset_chain == "near":
-            asset: AvailableToken =self._intent_contract.get_token(symbol=asset_symbol, chain=asset_chain)
+            symbol = asset_symbol
+            if symbol == "NEAR":
+                # The user want to execute a native_withdraw
+                symbol == "wNEAR" # We check the balance in wNEAR
+            asset: AvailableToken =self._intent_contract.get_token(symbol=symbol, chain=asset_chain)
             asset_balance = deposited.get(asset.defuse_asset_id)
         else:
             asset: BridgeableToken = self._omni_bridge.get_token(symbol=asset_symbol, chain=asset_chain)
@@ -99,6 +103,9 @@ class Agent:
             raise ValueError(f"{asset_symbol} has not been deposited yet")
         if asset_balance < amount:
             raise ValueError(f"{self._near_account.account_id} has not enough {asset_symbol} balance on {self._intent_contract.contract_id}")   
+        if asset_symbol == "NEAR":
+            # To perform a native_withdraw, we need to restore the symbol in NEAR
+            asset.symbol = "NEAR"
         signed_intent = self._near_account.sign_withdraw(asset, amount, native_dest_address)
         intent_hash = self._solver.publish_intent(signed_intent)
         status, tx_hash = self._solver.wait_for_intent_confirmed(intent_hash=intent_hash) 
@@ -106,7 +113,7 @@ class Agent:
             raise RuntimeError(f"withdraw of {amount} {asset.symbol} resulted in {status}")
         tx_chain = "near"
         if not native_dest_address.startswith("t") and asset.symbol == "ZEC":
-            # auto shield tx
+            # Auto shield tx
             tx_hash = self._zec_wallet.shield(to=native_dest_address)
             tx_chain = "zec"
         return status, intent_hash, tx_hash, tx_chain
