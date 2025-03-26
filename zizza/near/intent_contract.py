@@ -73,7 +73,7 @@ class IntentContract:
                                          'receiver_id': self.contract_id,
                                          'amount': asset.to_decimals(amount=amount),
                                          'msg': ""
-                                     }, constants.MAX_GAS, 1)['transaction']['hash']
+                                     }, 300000000000000, 1)['transaction']['hash']
 
     def deposit_near(self, amount: float, account: NEARAccount) -> str:
         wnear_asset: AvailableToken = self.get_token(symbol="wNEAR", chain="near")
