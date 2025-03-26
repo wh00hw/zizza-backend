@@ -186,6 +186,30 @@ response = api.set_agent(
 
 ---
 
+### 2. Get Wallet Summary
+
+Retrieves addresses and balances of the wallet.
+
+**Example Request:**
+```python
+response = api.get_wallet_summary()
+```
+
+**Example Response:**
+```json
+{
+  "ZEC": {
+    "ua_addresses": [{"address": "ua1...", "balance": 10.0}],
+    "z_addresses": [{"address": "zs1...", "balance": 5.0}],
+    "t_addresses": [{"address": "t1...", "balance": 2.0}]
+  },
+  "NEAR": {"address": "zizza.near", "balance": 15.0}
+}
+```
+
+---
+
+
 ### 2. Get Balance
 
 Retrieves the balance of a specified asset.

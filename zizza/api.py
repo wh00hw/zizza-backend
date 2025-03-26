@@ -38,7 +38,17 @@ class API:
                 - "NEAR": {"address": str, "balance": float}
         """
         self.agent = Agent(near_account_id, near_ed25519_key, zec_mnemonics, zec_wallet_birthday)
-        return self.agent.get_wallet_balances()
+        return self.agent.get_wallet_summary()
+    
+    @is_agent_set
+    def get_wallet_summary(self) -> dict:
+        """
+        Retrieves addresses and balances of the wallet.
+        
+        Returns:
+            dict: {"ZEC": dict, "NEAR": dict} addresses and balances of the wallet..
+        """
+        return self.agent.get_wallet_summary()
 
     @is_agent_set
     @normalize_chain_params

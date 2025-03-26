@@ -15,7 +15,7 @@ class Agent:
         self._omni_bridge = OmniBridge()
         self._solver = Solver()
     
-    def get_wallet_balances(self):
+    def get_wallet_summary(self) -> dict:
         return {
             "ZEC": self._zec_wallet.get_wallet_summary(),
             "NEAR": self._near_account.get_account_balance()
