@@ -27,6 +27,22 @@ def normalize_chain_params(func):
     
     return wrapper
 
+def normalize_boolean_params(func):
+    """
+    Decorator that normalizes parameters by converting "true" to True and "false" to False.
+    Only strings with value "true" or "false" (case-insensitive) are normalized.
+    Other values are left unchanged.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        new_kwargs = {
+            key: (True if value.lower() == "true" else False if value.lower() == "false" else value)
+            if isinstance(value, str) and "on_" in key else value
+            for key, value in kwargs.items()
+        }
+        return func(*args, **new_kwargs)
+    
+    return wrapper
 def normalize_amount_params(func):
     """
     Decorator that ensures parameters containing 'amount' are converted to float.

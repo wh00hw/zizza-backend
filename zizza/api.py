@@ -53,6 +53,7 @@ class API:
     @is_agent_set
     @normalize_chain_params
     @normalize_amount_params
+    @normalize_boolean_params
     def get_balance(self, asset_symbol: str, asset_chain: str, on_intent_contract: bool) -> dict[float]:
         """
         Retrieves the balance of a specified asset.
