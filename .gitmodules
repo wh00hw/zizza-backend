@@ -1,0 +1,3 @@
+[submodule "zizza/zcash/zecwallet-light-cli"]
+	path = zizza/zcash/zecwallet-light-cli
+	url = https://github.com/james-katz/zecwallet-light-cli.git

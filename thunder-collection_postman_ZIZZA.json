@@ -1,0 +1,54 @@
+{
+    "info": {
+        "_postman_id": "ff9c2b7d-2e9b-4bac-bf29-8cebb6dec359",
+        "name": "ZIZZA",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "status",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:5000/status/8bdc493e-ce2e-48dd-af20-ebca65f13296",
+                    "path": [
+                        "status",
+                        "8bdc493e-ce2e-48dd-af20-ebca65f13296"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000"
+                }
+            }
+        },
+        {
+            "name": "execute",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:5000/execute",
+                    "path": [
+                        "execute"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "[ {\n    \"command\": \"set_agent\",\n    \"params\": {\n      \"near_account_id\": \"zizza.near\",\n      \"near_ed25519_key\": \"ed25519:...\",\n      \"zec_mnemonics\": \"never gonna give you up never gonna let you down never gonna run around and desert you never gonna make you cry never gonna\",\n      \"zec_wallet_birthday\": 2864232\n    }\n  },\n  {\n    \"command\": \"swap\",\n    \"params\": {\n      \"asset_in_symbol\": \"NEAR\",\n      \"asset_in_chain\": \"near\",\n      \"amount_in\": 0.1,\n      \"asset_out_symbol\": \"ZEC\",\n      \"asset_out_chain\": \"zec\"\n    }\n  }\n]"
+                }
+            }
+        }
+    ]
+}
