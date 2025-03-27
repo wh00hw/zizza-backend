@@ -33,7 +33,7 @@ git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intent
 ```
 
 ```sh
-docker build -t zizza-backend .
+docker build -t zizza-blockchain-intents-server .
 ```
 or by creating a virtual environment
 
