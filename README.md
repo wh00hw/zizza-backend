@@ -29,7 +29,7 @@ See API Methods for more examples
 ## Install
 
 ```sh
-git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchains-intent-server
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intents-server
 ```
 
 ```sh
@@ -38,7 +38,7 @@ docker build -t zizza-backend .
 or by creating a virtual environment
 
 ```sh
-git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchains-intent-server
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intents-server
 ```
 
 ```
