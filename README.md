@@ -13,7 +13,7 @@ This project is live and accessible at:
 
 The frontend communicates with this backend via REST APIs.
 
-To run the server locally, follow the instructions in the Install section.
+To run the server locally, follow the instructions in the [Install](#install) section.
 
 ## Usage as a Package
 You can also use this backend as a package in your Python project:
@@ -24,7 +24,7 @@ from zizza.api import API
 api = API()
 ```
 This allows you to integrate the backend functionality directly into other Python applications.
-See API Methods for more examples
+See [API Methods[(#api-methods) for more examples
 
 ## Install
 
