@@ -84,7 +84,7 @@ class Agent:
             symbol = asset_symbol
             if symbol == "NEAR":
                 # The user want to execute a native_withdraw
-                symbol == "wNEAR" # We check the balance in wNEAR
+                symbol = "wNEAR" # We check the balance in wNEAR
             asset: AvailableToken =self._intent_contract.get_token(symbol=symbol, chain=asset_chain)
             asset_balance = deposited.get(asset.defuse_asset_id)
         else:
