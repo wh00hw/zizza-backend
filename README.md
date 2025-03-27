@@ -24,7 +24,7 @@ from zizza.api import API
 api = API()
 ```
 This allows you to integrate the backend functionality directly into other Python applications.
-See [API Methods[(#api-methods) for more examples
+See [API Methods](#api-methods) for more examples
 
 ## Install
 
