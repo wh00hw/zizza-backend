@@ -1,11 +1,35 @@
-# ZizZA Backend Intent Server
+# ZizZA Blockchain Intents Server
 
 Provides an interface for executing cryptocurrency operations through the API class, enabling the creation of intents and performing actions on the NEAR and Zcash blockchains. It supports setting up an agent, importing of creating wallets, checking balances, performing swaps, deposits, withdrawals, and sending assets.
+
+## Backend for ZizZa
+This repository serves as the backend for the [ZizZa](https://github.com/andreabellacicca/zizza) project.
+
+## Live Deployment
+This project is live and accessible at:
+  - https://zizza.xyz
+
+## How does it work?
+
+The frontend communicates with this backend via REST APIs.
+
+To run the server locally, follow the instructions in the Install section.
+
+## Usage as a Package
+You can also use this backend as a package in your Python project:
+
+```python
+from zizza.api import API
+
+api = API()
+```
+This allows you to integrate the backend functionality directly into other Python applications.
+See API Methods for more examples
 
 ## Install
 
 ```sh
-git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intent-server
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchains-intent-server
 ```
 
 ```sh
@@ -14,7 +38,7 @@ docker build -t zizza-backend .
 or by creating a virtual environment
 
 ```sh
-git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchain-intent-server
+git clone --recurse-submodules https://github.com/wh00hw/zizza-blockchains-intent-server
 ```
 
 ```
