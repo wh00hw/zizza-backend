@@ -56,7 +56,7 @@ pip install -r requirements.txt
 
 
 ```sh
-docker run -p 8000:5001 zizza-backend
+docker run -p 8000:5001 zizza-blockchain-intents-server
 ```
 or manually if you created the virtual environment
 
