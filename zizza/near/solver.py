@@ -1,5 +1,5 @@
 import requests
-from .asset import Token
+from .asset import AvailableToken
 from time import sleep
 
 SOLVER_BUS_URL = "https://solver-relay-v2.chaindefuser.com/rpc"
@@ -8,7 +8,7 @@ class Solver:
     def __init__(self, url=SOLVER_BUS_URL):
         self.url = url
 
-    def _get_quotes(self, asset_in: Token, asset_out: Token, amount_in):
+    def _get_quotes(self, asset_in: AvailableToken, asset_out: AvailableToken, amount_in):
         """Fetches the trading options from the solver bus."""
         rpc_request = {
             "id": "dontcare",
@@ -26,7 +26,7 @@ class Solver:
         response_json = response.json()
         return response_json.get("result", [])
     
-    def get_best_quote(self, asset_in: Token, asset_out: Token, amount_in: float) -> tuple[str,float, str, dict]:
+    def get_best_quote(self, asset_in: AvailableToken, asset_out: AvailableToken, amount_in: float) -> tuple[str,float, str, dict]:
         quotes = self._get_quotes(asset_in, asset_out, asset_in.to_decimals(amount_in))
         if not quotes:
             raise Exception(f"unable to find a quote to swap {amount_in} {asset_in.symbol} to {asset_out.symbol}")
@@ -38,7 +38,6 @@ class Solver:
     
 
     def get_intent_status(self, intent_hash: str) -> tuple:
-        #https://docs.near.org/tutorials/intents/withdraw#fetch-intent-status
         rpc_request = {
             "id": "dontcare",
             "jsonrpc": "2.0",
@@ -64,8 +63,7 @@ class Solver:
             res = requests.post(self.url, json=rpc_request).json()['result']
             return res['intent_hash']
         except Exception as e:
-            #"{'ActionError': {'index': 1, 'kind': {'FunctionCallError': {'ExecutionError': \"Smart contract panicked: The account doesn't have enough balance\"}}}}"
-            raise RuntimeError("Publish intent smart contract failed")
+            raise RuntimeError(f"Publish intent smart contract failed: {str(e)}")
 
     def wait_for_intent_confirmed(self, intent_hash):
         while True:

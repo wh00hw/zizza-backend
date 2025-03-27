@@ -52,7 +52,7 @@ class ZcashWallet:
         }
     
     def get_address(self, shielded=True):
-        return self._addresses().get('ua_addresses' if shielded else "t_addresses")[0]  
+        return self._addresses().get('ua_addresses' if shielded else "t_addresses")[-1]  
     
     def send(self, to:str, value:float):
         if not is_valid_address(address=to):
