@@ -112,12 +112,13 @@ class Agent:
         if not tx_hash:
             raise RuntimeError(f"withdraw of {amount} {asset.symbol} resulted in {status}")
         tx_chain = "near"
-        if asset.symbol == "ZEC":
-            if native_dest_address in self._zec_wallet._addresses.get('t_addresses'):
-                # Auto shield tx
-                ua_address = self._zec_wallet.get_address(shielded=True)
-                tx_hash = self._zec_wallet.shield(to=ua_address)
-                tx_chain = "zec"
+        # TODO wait tx confirmed and then shield it up
+        # if asset.symbol == "ZEC":
+        #     if native_dest_address in self._zec_wallet._addresses.get('t_addresses'):
+        #         # Auto shield tx
+        #         ua_address = self._zec_wallet.get_address(shielded=True)
+        #         tx_hash = self._zec_wallet.shield(to=ua_address)
+        #         tx_chain = "zec"
         return status, intent_hash, tx_hash, tx_chain
     
     def deposit(self, asset_symbol: str, asset_chain: str, amount: float) -> str:
