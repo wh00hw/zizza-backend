@@ -17,7 +17,7 @@ COPY zizza/zcash/zecwallet-light-cli/ .
 
 RUN cargo build --release
 
-FROM python:3.10-alpine AS zizza-backend
+FROM python:3.10-alpine AS zizza-blockchain-intents-server
 
 WORKDIR /app
 
